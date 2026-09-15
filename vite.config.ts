@@ -7,6 +7,11 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Lovable's default build target is Cloudflare Workers (`cloudflare-module`). This app is
+  // self-hosted as a plain Node process on the same VPS as the game backend (proxied by nginx,
+  // run under systemd), not deployed to Cloudflare, so it needs Nitro's standard Node server
+  // output instead.
+  nitro: { preset: "node-server" },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
