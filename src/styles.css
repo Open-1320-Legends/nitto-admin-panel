@@ -1,0 +1,214 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * 1320 Legends — Race Control design system.
+ * Carbon + ignition-orange. Single dark theme; no light mode.
+ * All colors are oklch tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Match the real game's own brand fonts (site/assets/*.css --font-heading / --font-ui /
+     --font-telemetry): condensed display face, Inter for UI body copy, a mono face for
+     telemetry-style numbers/labels. */
+  --font-display: "Arial Narrow", "Roboto Condensed", Impact, Haettenschweiler, sans-serif;
+  --font-sans: Inter, "Segoe UI", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "Roboto Mono", Consolas, "Courier New", monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-panel: 0 24px 64px oklch(0 0 0 / 0.5);
+  --shadow-ignite: 0 0 0 1px oklch(0.685 0.196 39 / 0.4), 0 18px 40px oklch(0.685 0.196 39 / 0.22);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Base darkened to match the real game's near-black brand (--black:#030100 /
+     --black-2:#090403 in site/assets/*.css) -- the previous L=0.155 background read as a
+     mid charcoal brown rather than the near-black the real admin console/site use. */
+  --background: oklch(0.085 0.012 40);
+  --foreground: oklch(0.962 0.012 70);
+
+  --surface: oklch(0.12 0.015 38);
+  --surface-raised: oklch(0.16 0.018 38);
+
+  --card: oklch(0.12 0.015 38);
+  --card-foreground: oklch(0.962 0.012 70);
+  --popover: oklch(0.135 0.017 38);
+  --popover-foreground: oklch(0.962 0.012 70);
+
+  --primary: oklch(0.685 0.196 39);
+  --primary-foreground: oklch(0.16 0.02 40);
+
+  --secondary: oklch(0.17 0.018 38);
+  --secondary-foreground: oklch(0.94 0.014 70);
+
+  --muted: oklch(0.15 0.013 40);
+  --muted-foreground: oklch(0.705 0.026 58);
+
+  --accent: oklch(0.815 0.126 72);
+  --accent-foreground: oklch(0.17 0.02 45);
+
+  --destructive: oklch(0.638 0.204 24);
+  --destructive-foreground: oklch(0.98 0.01 60);
+
+  --success: oklch(0.735 0.164 148);
+  --success-foreground: oklch(0.17 0.02 150);
+
+  --warning: oklch(0.805 0.132 78);
+  --warning-foreground: oklch(0.18 0.02 70);
+
+  --info: oklch(0.745 0.108 232);
+  --info-foreground: oklch(0.17 0.02 232);
+
+  --border: oklch(0.22 0.018 38);
+  --border-strong: oklch(0.38 0.06 40);
+  --input: oklch(0.2 0.018 38);
+  --ring: oklch(0.685 0.196 39);
+
+  --chart-1: oklch(0.685 0.196 39);
+  --chart-2: oklch(0.815 0.126 72);
+  --chart-3: oklch(0.735 0.164 148);
+  --chart-4: oklch(0.745 0.108 232);
+  --chart-5: oklch(0.638 0.204 24);
+
+  --sidebar: oklch(0.075 0.012 38);
+  --sidebar-foreground: oklch(0.9 0.014 70);
+  --sidebar-primary: oklch(0.685 0.196 39);
+  --sidebar-primary-foreground: oklch(0.16 0.02 40);
+  --sidebar-accent: oklch(0.16 0.019 38);
+  --sidebar-accent-foreground: oklch(0.962 0.012 70);
+  --sidebar-border: oklch(0.2 0.018 38);
+  --sidebar-ring: oklch(0.685 0.196 39);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(circle at 12% -8%, oklch(0.685 0.196 39 / 0.16), transparent 46%),
+      radial-gradient(circle at 92% -4%, oklch(0.815 0.126 72 / 0.1), transparent 40%);
+    background-repeat: no-repeat;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background: oklch(0.685 0.196 39 / 0.35);
+  }
+}
+
+/* Grid texture used behind the panel shell. */
+@utility carbon-grid {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(90deg, oklch(1 0 0 / 0.02) 0 1px, transparent 1px 72px),
+      repeating-linear-gradient(0deg, oklch(1 0 0 / 0.016) 0 1px, transparent 1px 72px);
+    mix-blend-mode: screen;
+    opacity: 0.5;
+  }
+}
+
+/* Small uppercase label used across panels. */
+@utility label-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/* Tabular numerals for any metric or currency figure. */
+@utility numeric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin scrollbars inside data panels. */
+@utility scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 999px;
+  }
+}
